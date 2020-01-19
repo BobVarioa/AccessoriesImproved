@@ -1,4 +1,0 @@
-displayName = Combined Accessories Improved
-author = MasterOfBob
-version = 1.0
-homepage = ""
