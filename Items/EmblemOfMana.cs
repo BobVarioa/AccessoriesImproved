@@ -26,6 +26,7 @@ namespace AccessoriesImproved.Items
 			player.magicDamage += 0.18f;
 			player.manaFlower = true;
 			player.manaCost += 0.1f;
+			player.manaMagnet = true;
 		}
 
 		public override void AddRecipes()
