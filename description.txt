@@ -1,7 +1,13 @@
 Combined Accessories Improved is a mod that adds some new Accessories and combined versions of existing ones
 
-C.A.I Includes 23 new Accessories, 21 of those being new accessories!
+C.A.I Includes 23 new Accessories, 21 of those being new / combined accessories!
 
-If you have any questions for me message me on discord : "MasterOfBob777#8346".
+Including :
 
-NOTE : Sprites are not final! They are all placeholder sprites (Except one it should be obvious).
+Final upgrades for all classes: Solar Knuckle Dusters, Stardust Dragonling, Vortex Bracers, Emblem of Mana
+
+Two new upgrades of the Ankh Shield : Holy Ankh Shield, Shield of Anubis
+
+And some upgrades for essential late game Accessories.
+
+NOTE : All sprites are not final! They are all placeholder sprites (Except one it should be obvious which).
