@@ -9,7 +9,7 @@ namespace AccessoriesImproved.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Shield of Anubis");
-			Tooltip.SetDefault("Grants immunity to knockback and fire blocks \nGrants immunity to most debuffs \nAbsorbs 25% of damage done to players on your team \nOnly active above 25 % life");
+			Tooltip.SetDefault("Grants immunity to knockback and fire blocks \nGrants immunity to most debuffs \nAbsorbs 25% of damage done to players on your team \nOnly active above 25 % life \nGrants a nondamaging Dash");
 		}
 
 		public override void SetDefaults()
@@ -35,6 +35,7 @@ namespace AccessoriesImproved.Items
 			player.buffImmune[BuffID.Chilled] = true;
 			player.hasPaladinShield = true;
 			player.allDamage += 0.12f;
+			player.dash = 2;
 		}
 		public override bool CanEquipAccessory(Player player, int slot)
 		{

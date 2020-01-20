@@ -1,5 +1,5 @@
 displayName = Combined Accessories Improved
 author = MasterOfBob
-version = 1.0.0.4
+version = 1.0.0.5
 homepage = 
 buildIgnore = .gitattributes, .gitignore, .git/, .vs/, bin/, obj/, .csproj, .cs, .sln

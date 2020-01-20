@@ -1,6 +1,7 @@
 using AccessoriesImproved.Buffs;
-using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Events;
+using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -37,6 +38,45 @@ namespace AccessoriesImproved.Items
 			ToggleDjinnsCurse = false;
 
 			DestroyerGauntlet = false;
+		}
+
+		public override void ProcessTriggers(TriggersSet triggersSet)
+		{
+			if (AccessoriesImproved.DjinnsCurseToggle.JustPressed && ToggleDjinnsCurse && player.slowFall == false) {
+				player.slowFall = true;
+			} else if (AccessoriesImproved.DjinnsCurseToggle.JustPressed && ToggleDjinnsCurse && player.slowFall == true)
+			{
+				player.slowFall = false;
+			}
+
+			if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleRain && Main.raining == false && !player.ZoneSnow)
+			{
+				Main.raining = true;
+				
+			}
+			else if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleRain && Main.raining == true && !player.ZoneSnow)
+			{
+				Main.raining = true;
+			}
+
+			if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleSandstorm && Sandstorm.Happening == false)
+			{
+				Sandstorm.Happening = true;
+			}
+			else if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleSandstorm && Sandstorm.Happening == true)
+			{
+				Sandstorm.Happening = false;
+			}
+
+			if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleSnowstorm && Main.raining == false && player.ZoneSnow)
+			{
+				Main.raining = true;
+
+			}
+			else if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleSnowstorm && Main.raining == true && player.ZoneSnow)
+			{
+				Main.raining = true;
+			}
 		}
 
 		// Code Borrowed From : https://github.com/Werebearguy/AssortedCrazyThings/blob/master/AssPlayer.cs
