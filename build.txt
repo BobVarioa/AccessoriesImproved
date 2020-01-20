@@ -1,5 +1,5 @@
 displayName = Combined Accessories Improved
 author = MasterOfBob
-version = 1.0.0.7
-homepage = "https://forums.terraria.org/index.php?threads/combined-accessories-improved.85510/"
+version = 1.0.0.8
+homepage = https://forums.terraria.org/index.php?threads/combined-accessories-improved.85510/
 buildIgnore = .gitattributes, .gitignore, .git/, .vs/, bin/, obj/, .csproj, .cs, .sln
