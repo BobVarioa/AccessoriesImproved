@@ -14,8 +14,9 @@ namespace AccessoriesImproved.Items
 
 		public override void SetDefaults()
 		{
-			item.value = 10000;
-			item.rare = 2;
+			item.value = Item.buyPrice(0, 7, 0, 0);
+			item.rare = 6;
+			item.maxStack = 1;
 			item.accessory = true;
 		}
 

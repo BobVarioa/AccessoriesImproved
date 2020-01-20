@@ -19,6 +19,7 @@ namespace AccessoriesImproved.Items
 		public bool EternalFlame = false;
 		public bool BetsyEgg = false;
 		public bool ToggleDjinnsCurse = false;
+		public bool slowfallOn = false;
 
 		public bool DestroyerGauntlet = false;
 		public bool VortexBracers = false;
@@ -38,46 +39,183 @@ namespace AccessoriesImproved.Items
 			ToggleDjinnsCurse = false;
 
 			DestroyerGauntlet = false;
+
+			if (slowfallOn == true)
+			{
+				player.slowFall = true;
+			}
+			else if (slowfallOn == false)
+			{
+				player.slowFall = false;
+			}
 		}
 
 		public override void ProcessTriggers(TriggersSet triggersSet)
 		{
-			if (AccessoriesImproved.DjinnsCurseToggle.JustPressed && ToggleDjinnsCurse && player.slowFall == false) {
-				player.slowFall = true;
-			} else if (AccessoriesImproved.DjinnsCurseToggle.JustPressed && ToggleDjinnsCurse && player.slowFall == true)
+			if (AccessoriesImproved.DjinnsCurseToggle.JustPressed && ToggleDjinnsCurse )
 			{
-				player.slowFall = false;
+				switch (slowfallOn)
+				{
+					case false:
+						slowfallOn = true;
+						Main.NewText("Your legs turn to a mist");
+						break;
+					case true:
+						slowfallOn = false;
+						Main.NewText("Your legs regain their worldly form");
+						break;
+				}
 			}
 
-			if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleRain && Main.raining == false && !player.ZoneSnow)
+			if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleRain && !(player.ZoneSnow || (player.ZoneDesert || player.ZoneSandstorm)))
 			{
-				Main.raining = true;
-				
+				switch ( Main.raining )
+				{
+					case false:
+						StartRain();
+						Main.cloudBGActive = 1f;
+						Main.cloudBGAlpha = 1f;
+						Main.numClouds = Main.cloudLimit;
+						Main.NewText("Rain pours down from above");
+						break;
+					case true:
+						StopRain();
+						Main.cloudBGActive = 0f;
+						Main.cloudBGAlpha = 0f;
+						Main.numClouds = 0;
+						Main.NewText("The rain slowly fades away");
+						break;
+				}
 			}
-			else if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleRain && Main.raining == true && !player.ZoneSnow)
+			if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleSandstorm && (player.ZoneDesert || player.ZoneSandstorm))
 			{
-				Main.raining = true;
+				switch (Sandstorm.Happening)
+				{
+					case false:
+						Sandstorm.Happening = true;
+						Main.NewText("Sandstorm On");
+						break;
+					case true:
+						Sandstorm.Happening = false;
+						Main.NewText("Sandstorm Off");
+						break;
+				}
 			}
 
-			if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleSandstorm && Sandstorm.Happening == false)
+			if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleSnowstorm && player.ZoneSnow)
 			{
-				Sandstorm.Happening = true;
-			}
-			else if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleSandstorm && Sandstorm.Happening == true)
-			{
-				Sandstorm.Happening = false;
-			}
-
-			if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleSnowstorm && Main.raining == false && player.ZoneSnow)
-			{
-				Main.raining = true;
-
-			}
-			else if (AccessoriesImproved.WeatherToggle.JustPressed && ToggleSnowstorm && Main.raining == true && player.ZoneSnow)
-			{
-				Main.raining = true;
+				switch (Main.raining)
+				{
+					case false:
+						StartRain();
+						Main.cloudBGActive = 1f;
+						Main.cloudBGAlpha = 1f;
+						Main.numClouds = Main.cloudLimit;
+						Main.NewText("A blizzard begins brewing");
+						break;
+					case true:
+						StopRain();
+						Main.cloudBGActive = 0f;
+						Main.cloudBGAlpha = 0f;
+						Main.numClouds = 0;
+						Main.NewText("The snowy wings fade away");
+						break;
+				}
 			}
 		}
+		// Code Borrowed From : https://github.com/dragon3025/Reduced-Grinding/blob/master/Items/Rain_Potion.cs
+		private static void StopRain()
+		{
+			Main.rainTime = 0;
+			Main.raining = false;
+			Main.maxRaining = 0f;
+		}
+
+		private static void StartRain()
+		{
+			int num = 86400;
+			int num2 = num / 24;
+			Main.rainTime = Main.rand.Next(num2 * 8, num);
+			if (Main.rand.Next(3) == 0)
+			{
+				Main.rainTime += Main.rand.Next(0, num2);
+			}
+			if (Main.rand.Next(4) == 0)
+			{
+				Main.rainTime += Main.rand.Next(0, num2 * 2);
+			}
+			if (Main.rand.Next(5) == 0)
+			{
+				Main.rainTime += Main.rand.Next(0, num2 * 2);
+			}
+			if (Main.rand.Next(6) == 0)
+			{
+				Main.rainTime += Main.rand.Next(0, num2 * 3);
+			}
+			if (Main.rand.Next(7) == 0)
+			{
+				Main.rainTime += Main.rand.Next(0, num2 * 4);
+			}
+			if (Main.rand.Next(8) == 0)
+			{
+				Main.rainTime += Main.rand.Next(0, num2 * 5);
+			}
+			float num3 = 1f;
+			if (Main.rand.Next(2) == 0)
+			{
+				num3 += 0.05f;
+			}
+			if (Main.rand.Next(3) == 0)
+			{
+				num3 += 0.1f;
+			}
+			if (Main.rand.Next(4) == 0)
+			{
+				num3 += 0.15f;
+			}
+			if (Main.rand.Next(5) == 0)
+			{
+				num3 += 0.2f;
+			}
+			Main.rainTime = (int)((float)Main.rainTime * num3);
+			ChangeRain();
+			Main.raining = true;
+		}
+
+		private static void ChangeRain()
+		{
+			if (Main.cloudBGActive >= 1f || (double)Main.numClouds > 150.0)
+			{
+				if (Main.rand.Next(3) == 0)
+				{
+					Main.maxRaining = (float)Main.rand.Next(20, 90) * 0.01f;
+					return;
+				}
+				Main.maxRaining = (float)Main.rand.Next(40, 90) * 0.01f;
+				return;
+			}
+			else if ((double)Main.numClouds > 100.0)
+			{
+				if (Main.rand.Next(3) == 0)
+				{
+					Main.maxRaining = (float)Main.rand.Next(10, 70) * 0.01f;
+					return;
+				}
+				Main.maxRaining = (float)Main.rand.Next(20, 60) * 0.01f;
+				return;
+			}
+			else
+			{
+				if (Main.rand.Next(3) == 0)
+				{
+					Main.maxRaining = (float)Main.rand.Next(5, 40) * 0.01f;
+					return;
+				}
+				Main.maxRaining = (float)Main.rand.Next(5, 30) * 0.01f;
+				return;
+			}
+		}
+		// End Code Borrowed
 
 		// Code Borrowed From : https://github.com/Werebearguy/AssortedCrazyThings/blob/master/AssPlayer.cs
 		private void ApplyHitDebuffs(Entity victim)

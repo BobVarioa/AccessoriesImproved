@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,8 +14,9 @@ namespace AccessoriesImproved.Items
 
 		public override void SetDefaults() 
 		{
-			item.value = 10000;
+			item.value = Item.buyPrice(0, 0, 70, 0);
 			item.rare = 2;
+			item.maxStack = 99;
 		}
 
 		public override void AddRecipes() 
