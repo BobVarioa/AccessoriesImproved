@@ -37,6 +37,22 @@ namespace AccessoriesImproved.Items
 			player.AddBuff(62, 5);
 		}
 
+		public override bool CanEquipAccessory(Player player, int slot)
+		{
+			if (slot < 10)
+			{
+				int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+				for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+				{
+					if (slot != i && (player.armor[i].type == ModContent.ItemType<HeartOfTheStorm>() || player.armor[i].type == ModContent.ItemType<EyeOfTheStorm>() || player.armor[i].type == ModContent.ItemType<SoulOfTheBlizzard>() || player.armor[i].type == ModContent.ItemType<DesertStormGear>() || player.armor[i].type == ModContent.ItemType<InsulatedDivingGear>() || player.armor[i].type == ItemID.ArcticDivingGear || player.armor[i].type == ItemID.FrozenTurtleShell))
+					{
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

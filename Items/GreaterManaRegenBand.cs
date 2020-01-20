@@ -25,6 +25,22 @@ namespace AccessoriesImproved.Items
 			player.statManaMax2 += 40;
 		}
 
+		public override bool CanEquipAccessory(Player player, int slot)
+		{
+			if (slot < 10)
+			{
+				int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+				for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+				{
+					if (slot != i && (player.armor[i].type == ItemID.ManaRegenerationBand || player.armor[i].type == ModContent.ItemType<SuperiorManaRegenBand>() || player.armor[i].type == ModContent.ItemType<EmblemOfMana>()))
+					{
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

@@ -22,11 +22,26 @@ namespace AccessoriesImproved.Items
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.manaRegenBonus += 40;
-			player.statManaMax2 += 60;
+			player.statManaMax2 += 100;
 			player.magicDamage += 0.18f;
 			player.manaFlower = true;
 			player.manaCost += 0.1f;
 			player.manaMagnet = true;
+		}
+		public override bool CanEquipAccessory(Player player, int slot)
+		{
+			if (slot < 10)
+			{
+				int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+				for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+				{
+					if (slot != i && (player.armor[i].type == ItemID.ManaRegenerationBand || player.armor[i].type == ModContent.ItemType<SuperiorManaRegenBand>() || player.armor[i].type == ModContent.ItemType<GreaterManaRegenBand>()))
+					{
+						return false;
+					}
+				}
+			}
+			return true;
 		}
 
 		public override void AddRecipes()

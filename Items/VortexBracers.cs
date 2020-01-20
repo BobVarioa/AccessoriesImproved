@@ -30,8 +30,9 @@ namespace AccessoriesImproved.Items
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.FireGauntlet);
-			recipe.AddIngredient(ItemID.DestroyerEmblem);
+			recipe.AddIngredient(ItemID.MagicQuiver);
+			recipe.AddIngredient(ItemID.SniperScope);
+			recipe.AddIngredient(ItemID.FragmentVortex, 15);
 			recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

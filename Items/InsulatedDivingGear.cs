@@ -34,6 +34,22 @@ namespace AccessoriesImproved.Items
 			}
 		}
 
+		public override bool CanEquipAccessory(Player player, int slot)
+		{
+			if (slot < 10)
+			{
+				int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+				for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+				{
+					if (slot != i && (player.armor[i].type == ModContent.ItemType<DesertStormGear>() || player.armor[i].type == ModContent.ItemType<BlizzardDivingGear>() || player.armor[i].type == ItemID.ArcticDivingGear))
+					{
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

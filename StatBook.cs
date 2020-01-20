@@ -20,8 +20,8 @@ namespace AccessoriesImproved
 
         public override void SetDefaults()
         {
-            item.width = 28;
-            item.height = 38;
+            item.width = 24;
+            item.height = 24;
         }
 
         public override bool CanRightClick()
@@ -61,12 +61,12 @@ namespace AccessoriesImproved
             // Ranged
             lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Ranged Damage: {player.rangedDamage * 100}%"); inum++;
             lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Ranged Crit: {player.rangedCrit}%"); inum++;
-            lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Stealth: {player.stealth}"); inum++;
+            lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Stealth: {-player.stealth}"); inum++;
 
             // Magic
             lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Magic Damage: {player.magicDamage * 100}%"); inum++;
             lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Magic Crit: {player.magicCrit}%"); inum++;
-            lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Max Mana: {player.statLifeMax2} MP"); inum++;
+            lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Max Mana: {player.statManaMax2} MP"); inum++;
             lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Mana Regen: {player.manaRegen} MP/second"); inum++;
 
             // Summon
@@ -83,7 +83,7 @@ namespace AccessoriesImproved
             lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Wing Time: {player.wingTimeMax / 60} seconds"); inum++;
 
             // Misc
-            lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Aggro: {player.aggro}"); //inum++;
+            lines[inum] = new TooltipLine(mod, (inum + 1).ToString(), $"Aggro: {player.aggro}"); inum++;
 
             Array.Resize(ref lines, inum);
 

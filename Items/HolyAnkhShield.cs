@@ -17,6 +17,7 @@ namespace AccessoriesImproved.Items
 			item.value = 10000;
 			item.rare = 2;
 			item.accessory = true;
+			item.defense = 8;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -33,6 +34,21 @@ namespace AccessoriesImproved.Items
 			player.buffImmune[BuffID.Weak] = true;
 			player.buffImmune[BuffID.Chilled] = true;
 			player.hasPaladinShield = true;
+		}
+		public override bool CanEquipAccessory(Player player, int slot)
+		{
+			if (slot < 10)
+			{
+				int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+				for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+				{
+					if (slot != i && (player.armor[i].type == ItemID.AnkhShield || player.armor[i].type == ModContent.ItemType<ShieldOfAnubis>()))
+					{
+						return false;
+					}
+				}
+			}
+			return true;
 		}
 
 		public override void AddRecipes()

@@ -17,6 +17,7 @@ namespace AccessoriesImproved.Items
 			item.value = 10000;
 			item.rare = 2;
 			item.accessory = true;
+			item.defense = 10;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -35,7 +36,21 @@ namespace AccessoriesImproved.Items
 			player.hasPaladinShield = true;
 			player.allDamage += 0.12f;
 		}
-
+		public override bool CanEquipAccessory(Player player, int slot)
+		{
+			if (slot < 10)
+			{
+				int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+				for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+				{
+					if (slot != i && (player.armor[i].type == ItemID.AnkhShield || player.armor[i].type == ModContent.ItemType<HolyAnkhShield>()))
+					{
+						return false;
+					}
+				}
+			}
+			return true;
+		}
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

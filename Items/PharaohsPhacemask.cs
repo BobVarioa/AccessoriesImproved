@@ -27,6 +27,22 @@ namespace AccessoriesImproved.Items
 			player.GetModPlayer<AccessPlayer>().ToggleDjinnsCurse = true;
 		}
 
+		public override bool CanEquipAccessory(Player player, int slot)
+		{
+			if (slot < 10)
+			{
+				int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+				for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+				{
+					if (slot != i && (player.armor[i].type == ModContent.ItemType<DesertBandana>() || player.armor[i].type == ModContent.ItemType<DesertStormGear>()))
+					{
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
