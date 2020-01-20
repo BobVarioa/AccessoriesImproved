@@ -20,8 +20,9 @@ namespace AccessoriesImproved
 
         public override void SetDefaults()
         {
-            item.width = 24;
-            item.height = 24;
+            item.value = Item.buyPrice(0, 0, 0, 0);
+            item.rare = 0;
+            item.maxStack = 1;
         }
 
         public override bool CanRightClick()
