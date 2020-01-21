@@ -62,13 +62,13 @@ namespace AccessoriesImproved.Items
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<CrystalisedEtherianMana>(), 1); // Crystised Etherian Mana
+			recipe.AddIngredient(ModContent.ItemType<CrystalizedEtherianMana>(), 1); // Crystised Etherian Mana
 			recipe.AddTile(TileID.WarTable);
 			recipe.SetResult(ItemID.DD2EnergyCrystal, 50);
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<CrystalisedEtherianMana>(), 5); // Crystised Etherian Mana
+			recipe.AddIngredient(ModContent.ItemType<CrystalizedEtherianMana>(), 5); // Crystised Etherian Mana
 			recipe.AddTile(TileID.WarTable);
 			recipe.SetResult(ItemID.DD2ElderCrystal);
 			recipe.AddRecipe();

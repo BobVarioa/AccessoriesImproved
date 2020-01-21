@@ -50,8 +50,8 @@ namespace AccessoriesImproved.Items
 			recipe.AddIngredient(ItemID.MonkBelt);
 			recipe.AddIngredient(ItemID.HuntressBuckler);
 			recipe.AddIngredient(ItemID.SquireShield);
+			recipe.AddIngredient(ModContent.ItemType<CrystalizedEtherianMana>(), 3);
 			recipe.AddTile(TileID.WarTable);
-			recipe.AddTile(TileID.WarTableBanner);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

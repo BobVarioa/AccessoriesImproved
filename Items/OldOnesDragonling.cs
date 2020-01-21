@@ -52,8 +52,8 @@ namespace AccessoriesImproved.Items
 			recipe.AddIngredient(ModContent.ItemType<OldOnesAdornment>());
 			recipe.AddIngredient(ItemID.BetsyWings);
 			recipe.AddIngredient(ItemID.BossMaskBetsy);
+			recipe.AddIngredient(ModContent.ItemType<CrystalizedEtherianMana>(), 5);
 			recipe.AddTile(TileID.WarTable);
-			recipe.AddTile(TileID.WarTableBanner);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

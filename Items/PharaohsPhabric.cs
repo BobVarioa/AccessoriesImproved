@@ -8,7 +8,7 @@ namespace AccessoriesImproved.Items
 	{
 		public override void SetStaticDefaults() 
 		{
-			DisplayName.SetDefault("Pharaoh's Fabric");
+			DisplayName.SetDefault("Pharaoh's Phabric");
 			Tooltip.SetDefault("An Anicent Cloth");
 		}
 

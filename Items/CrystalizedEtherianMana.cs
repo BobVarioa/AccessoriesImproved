@@ -4,11 +4,11 @@ using Terraria.ModLoader;
 
 namespace AccessoriesImproved.Items
 {
-	public class CrystalisedEtherianMana : ModItem
+	public class CrystalizedEtherianMana : ModItem
 	{
 		public override void SetStaticDefaults() 
 		{
-			DisplayName.SetDefault("Crystalised Etherian Mana");
+			DisplayName.SetDefault("Crystalized Etherian Mana");
 			Tooltip.SetDefault("A solidified piece of Etherian Mana");
 		}
 

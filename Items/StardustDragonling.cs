@@ -50,9 +50,9 @@ namespace AccessoriesImproved.Items
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ModContent.ItemType<OldOnesDragonling>());
+			recipe.AddIngredient(ModContent.ItemType<CrystalizedEtherianMana>(), 5);
 			recipe.AddIngredient(ItemID.FragmentStardust, 15);
 			recipe.AddTile(TileID.WarTable);
-			recipe.AddTile(TileID.WarTableBanner);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
