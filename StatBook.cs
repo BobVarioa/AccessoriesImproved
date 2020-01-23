@@ -8,9 +8,6 @@ namespace AccessoriesImproved
 {
     public class StatBook : ModItem
     {
-        public int pagenum = 0;
-        public int pages = 4;
-
         public int inum = 0;
 
         public override void SetStaticDefaults()
@@ -23,22 +20,6 @@ namespace AccessoriesImproved
             item.value = Item.buyPrice(0, 0, 0, 0);
             item.rare = 0;
             item.maxStack = 1;
-        }
-
-        public override bool CanRightClick()
-        {
-            return true;
-        }
-
-        public override void RightClick(Player player)
-        {
-            if (pagenum != pages)
-            {
-                pagenum += 1;
-            } else
-            {
-                pagenum = 0;
-            }
         }
 
 

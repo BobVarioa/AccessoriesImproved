@@ -9,7 +9,7 @@ namespace AccessoriesImproved.Items
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Shield of Anubis");
-			Tooltip.SetDefault("Grants immunity to knockback and fire blocks \nGrants immunity to most debuffs \nAbsorbs 25% of damage done to players on your team \nOnly active above 25 % life \nGrants a damaging Dash \n 12 % Increase to all damage");
+			Tooltip.SetDefault("Grants immunity to knockback and fire blocks \nGrants immunity to most debuffs \nAbsorbs 25% of damage done to players on your team (Only active above 25 % life) \nGrants a damaging Dash \n12 % Increase to all damage");
 		}
 
 		public override void SetDefaults()
